@@ -5,8 +5,6 @@ import OverlayWithHole from './OverlayWithHole';
 const OverlayProvider = ({ children }) => {
   return (
       <View style={styles.container}>
-        <OverlayWithHole width={350} height={50} xValue={40} yValue={80}/>
-      {/* Anything here is ontop */}
         {children}
       </View>
   );
