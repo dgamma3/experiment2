@@ -24,7 +24,7 @@ const OverlayWithHole = ({ holeSize }) => {
       position: 'absolute',
       width: width,
       height: height,
-      borderRadius: 100,
+      //borderRadius: 100,
 
       borderTopWidth: 80,
       borderBottomWidth: height - pillHeight - 80,
