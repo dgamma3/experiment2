@@ -5,71 +5,49 @@ const { width, height } = Dimensions.get('window');
 
 const overlayBackgroundColor = 'rgba(0, 0, 0, 0.5)'
 
+const pillHeight = 50
+const pillWidth = 350
+
 const OverlayWithHole = ({ holeSize }) => {
   console.log(width, height)
   const overlayStyles = StyleSheet.create({
     container: {
-      position: 'relative',
       height: '100%',
       width: '100%',
-    },
-    overlayTopBottom: {
       flex: 1,
-      height: '50%',
-      width: '100%',
-      backgroundColor: overlayBackgroundColor,
-    },
-    overlayMiddleContainer: {
-      display: 'flex',
-      flexDirection: 'row'
-    },
-    overlayMiddleLeft: {
-      flex: 1,
-      height: '100%',
-      width: '100%',
-      backgroundColor: overlayBackgroundColor,
-    },
-    overlayMiddleRight: {
-      flex: 1,
-      height: '100%',
-      width: '100%',
-      backgroundColor: overlayBackgroundColor,
-    },
-    hole: {
-      width: holeSize,
-      height: holeSize,
-      borderRadius: holeSize,
-      borderWidth: 2,
-      borderColor: 'white',
-      backgroundColor: 'transparent',
-      pointerEvents: 'none',
+      alignItems: 'center'
     },
     innerHole: {
       zIndex: 10,
-      left: (width / 2) - (holeSize),
-      top: (height / 2) - (holeSize),
+      left: 0,
+      top: 0,
       position: 'absolute',
-      width: holeSize * 2,
-      height: holeSize * 2,
-      borderRadius: holeSize,
-      borderWidth: 100,
-      borderColor: 'black',
+      width: width,
+      height: height,
+      borderRadius: 100,
+
+      borderTopWidth: 80,
+      borderBottomWidth: height - pillHeight - 80,
+      borderLeftWidth: (width - pillWidth) / 2,
+      borderRightWidth: (width - pillWidth) / 2,
+
+      borderColor: overlayBackgroundColor,
       backgroundColor: 'transparent',
       pointerEvents: 'none',
     },
+    pill: {
+      marginTop: 80,
+      width: pillWidth,
+      height: pillHeight,
+      backgroundColor: 'white',
+      borderRadius: 50
+    }
   });
 
   return (
     <View style={overlayStyles.container}>
+      <View style={overlayStyles.pill}/>
       <View style={overlayStyles.innerHole} />
-      <View style={overlayStyles.overlayTopBottom} />
-      <View style={overlayStyles.overlayMiddleContainer}>
-        <View style={overlayStyles.overlayMiddleLeft} />
-        <View style={overlayStyles.hole}>
-        </View>
-        <View style={overlayStyles.overlayMiddleRight}/>
-      </View>
-      <View style={overlayStyles.overlayTopBottom} />
     </View>
   );
 };
