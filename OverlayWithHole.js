@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
@@ -42,6 +42,9 @@ const OverlayWithHole = ({ width, height, xValue, yValue }) => {
   return (
     <View style={overlayStyles.container}>
       <View style={overlayStyles.innerHole} />
+      {/* Anything here is underneath */}
+      <View style={{ height: 50, width: 50, backgroundColor: 'blue' }} />
+      <Text style={{ fontSize: 50 }}>Hi</Text>
     </View>
   );
 };

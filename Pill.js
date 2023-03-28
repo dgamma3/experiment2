@@ -7,7 +7,7 @@ const Pill = () => {
 
   const pillStyles = StyleSheet.create({
     pill: {
-      marginTop: 80,
+      marginTop: 200,
       width: pillWidth,
       height: pillHeight,
       backgroundColor: 'white',
