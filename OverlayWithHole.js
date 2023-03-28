@@ -1,20 +1,37 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+const overlayBackgroundColor = 'rgba(0, 0, 0, 1)'
 
 const OverlayWithHole = ({ holeSize }) => {
   const overlayStyles = StyleSheet.create({
-    overlay: {
+    container: {
+      height: '100%',
+      width: '100%',
+    },
+    overlayTopBottom: {
+      flex: 1,
+      height: '50%',
+      width: '100%',
+      backgroundColor: overlayBackgroundColor,
+    },
+    overlayMiddleContainer: {
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    overlayMiddleLeft: {
       flex: 1,
       height: '100%',
       width: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 1)',
+      backgroundColor: overlayBackgroundColor,
+    },
+    overlayMiddleRight: {
+      flex: 1,
+      height: '100%',
+      width: '100%',
+      backgroundColor: overlayBackgroundColor,
     },
     hole: {
-      position: 'absolute',
-      top: (height - holeSize) / 2,
-      left: (width - holeSize) / 2,
       width: holeSize,
       height: holeSize,
       borderRadius: holeSize / 2,
@@ -26,9 +43,14 @@ const OverlayWithHole = ({ holeSize }) => {
   });
 
   return (
-    <View style={overlayStyles.overlay}>
-      <View style={overlayStyles.hole} />
-      
+    <View style={overlayStyles.container}>
+      <View style={overlayStyles.overlayTopBottom} />
+      <View style={overlayStyles.overlayMiddleContainer}>
+        <View style={overlayStyles.overlayMiddleLeft} />
+        <View style={overlayStyles.hole} />
+        <View style={overlayStyles.overlayMiddleRight}/>
+      </View>
+      <View style={overlayStyles.overlayTopBottom} />
     </View>
   );
 };
