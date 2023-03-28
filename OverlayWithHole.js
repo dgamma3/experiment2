@@ -6,22 +6,22 @@ const { width, height } = Dimensions.get('window');
 const OverlayWithHole = ({ holeSize }) => {
   const overlayStyles = StyleSheet.create({
     overlay: {
-      zIndex: 100,
       flex: 1,
-      width: '100%',
       height: '100%',
-      backgroundColor: 'black',
-      //opacity: 0.8
+      width: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 1)',
     },
     hole: {
       position: 'absolute',
+      top: (height - holeSize) / 2,
+      left: (width - holeSize) / 2,
       width: holeSize,
       height: holeSize,
       borderRadius: holeSize / 2,
-      backgroundColor: 'transparent',
-      opacity: 0.5,
       borderWidth: 2,
       borderColor: 'white',
+      backgroundColor: 'transparent',
+      pointerEvents: 'none',
     },
   });
 
